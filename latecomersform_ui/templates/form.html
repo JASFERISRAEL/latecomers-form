@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KGISL INSTITUTE OF TECHNOLOGY</title>
+ <link rel="stylesheet" type="text/css" href="../static/style.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="heading">
+    <h1 style="color: #ffffff;padding: auto;">KGISL INSTITUTE OF TECHNOLOGY</h1>
+   </div>
+ 
+<div class="marque">
+  <marquee direction="right" scrollamount="10px" scrolldelay="10px"><b>Better 3 hours too soon than a minute too late</b></marquee>
+</div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6_4jrAI8iW14ppiU9gOyhoRSy9KPMFxdUHQ&usqp=CAU" alt="Image" class="top-left-image">
+<img src="https://gera-ident.com/wp-content/uploads/2021/10/ISO_9001_farbe_single.png" alt="Image" class="top-right-image">
+  <div class="container" class="form-group">
+    <h2><u>Latecomers Form</u></h2>
+    <form enctype="multipart/form-data">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="sname" required><br><br>
+
+      <label for="roll-number">Roll Number:</label>
+      <input type="text" id="rolnumber" name="roll-number" required><br><br>
+
+      <label for="gender">Gender:</label>
+       <select id="gender" name="gender">
+       <option value="male">Male</option>
+       <option value="female">Female</option>
+       <option value="other">Other</option>
+       </select><br><br>
+      
+
+      <label for="department">Department:</label>
+         <select name="department" id="department" required>
+         <option value="">Select a department</option>
+         <option value="ai&ds">BTECH Artificial Intelligence and Data Science</option>
+         <option value="cse">BE Computer science Engineering</option>
+         <option value="ece">BE Electronics and Communication Engineering</option>
+         <option value="it">BTECH Information Technology</option>
+        <option value="mech">BE Mechanical Engineering</option>
+        <option value="civil">BE Civil Engineering</option>
+        </select><br><br>
+        <label for="year">Year of Study:</label>
+        <select name="year of study" id="yearofstudy" required>
+          <option value="">Select a year of study</option>
+          <option value="Ⅰ ">Ⅰ </option>
+          <option value=" Ⅱ "> Ⅱ  </option>
+          <option value="Ⅲ">Ⅲ </option>
+          <option value="Ⅳ">Ⅳ </option></select><br><br>
+
+          <label for="date">Date:</label>
+          <input type="date" id="date" name="date"><br><br>
+
+      <label for="time-in">Select a time-in:</label>
+       <input type="time" id="time" name="time"><br><br>
+      
+      <label for="reason">Reason For Late:</label>
+      <input type="text" name="reason" id="reason" required><br><br>
+      
+      <button type="button" id="Submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+
+    $('#Submit').click(function(){
+        const name = $('#sname').val();
+        var rolnumber = $('#rolnumber').val();
+        var gender = $('#gender').val();
+        var department = $('#department').val();
+        var year = $('#yearofstudy').val();
+        var time =$('#time').val();
+        var reason =$('#reason').val();
+
+        console.log()
+        $.ajax({
+          url: '/insertvalue',
+          type:'post',
+          data:JSON.stringify({"name":name,"Rno":rolnumber,"gender":gender,"Dep":department,"year":year,"time":time,"reson":reason}),
+          success:function(data){
+            console.log('sucesss');
+            location.reload();
+
+          }
+        })
+
+    })
+  </script>
+  </body>
+</html>
